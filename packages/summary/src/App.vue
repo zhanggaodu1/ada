@@ -1,6 +1,7 @@
 <template>
   <div class="mx-20 content">
     <Header title="夏季徽章" />
+    <Xstate />
     <!-- <Raf /> -->
     <Calender />
     <Tabs/>
@@ -65,6 +66,7 @@ import Css from './Css.vue';
 import ChangeTheme from './ChangeTheme.vue';
 import Calender from './Calender.vue';
 import Raf from './Raf.vue';
+import Xstate from './Xstate.vue';
 
 function readExcel (e){
   // 读取表格文件

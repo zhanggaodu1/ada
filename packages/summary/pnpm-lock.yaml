@@ -11,12 +11,14 @@ specifiers:
   unplugin-vue-components: ^0.18.5
   vite: ^2.9.0
   vue: ^3.2.25
+  xstate: ^4.33.6
 
 dependencies:
   '@vitejs/plugin-legacy': 1.8.2_vite@2.9.12
   js-cookie: 3.0.1
   swiper: 8.3.2
   vue: 3.2.37
+  xstate: 4.33.6
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.37
@@ -1027,6 +1029,10 @@ packages:
     dependencies:
       isexe: 2.0.0
     dev: true
+
+  /xstate/4.33.6:
+    resolution: {integrity: sha512-A5R4fsVKADWogK2a43ssu8Fz1AF077SfrKP1ZNyDBD8lNa/l4zfR//Luofp5GSWehOQr36Jp0k2z7b+sH2ivyg==}
+    dev: false
 
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
