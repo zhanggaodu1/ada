@@ -130,9 +130,10 @@ const sendMessage = () =>{
 }
 nextTick(()=>{
   const video = document.querySelector('video');
-  video.addEventListener('timeupdate', (event) => {
-    console.log('The currentTime attribute has been updated. Again.');
-  });
+  // TODO 事件报错
+  // video.addEventListener('timeupdate', (event) => {
+  //   console.log('The currentTime attribute has been updated. Again.');
+  // });
 })
 
 //web-worker发送消息

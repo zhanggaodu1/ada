@@ -1,36 +1,42 @@
 <script setup>
-  import { createMachine} from 'xstate'
-  const state = createMachine ({
-    id: 'userState', // 状态机标识
-    initial: 'visitor', // 初始状态
-    context: { // 整个状态机的本地context
-      elapsed: 0,
-      direction: 'ee'
+import { ref, computed } from 'vue'
+import { createMachine } from 'xstate'
+const state = createMachine ({
+  id: 'userState', // 状态机标识
+  initial: 'visitor', // 初始状态
+  context: { // 整个状态机的本地context
+    elapsed: 0,
+    direction: 'ee'
+  },
+  states: { // 状态机的定义
+    visitor: {
+      tags: '1', // 单标签
+      on: {
+        // CLICK: 'vipPerson'
+      },
+      meta: { // 状态的相关静态数据
+        message: 'Loading...'
+      },
+      after: {
+        // 3000: { target: 'failure.timeout' }
+      },
     },
-    states: { // 状态机的定义
-      visitor: {
-        tags: '1', // 单标签
-        on: {
-          TOGGLE: 'active'
-        },
-        meta: { // 状态的相关静态数据
-          message: 'Loading...'
-        },
-        after: {
-          3000: { target: 'failure.timeout' }
-        },
-      },
-      vipPerson: {
-        tags: ['1', '2'] // 多标签
-      },
-      vipCompany: {
-        
-      },
-      blackList: { 
-        type: 'final' // atomic 没有子节点  computed 包含子节点
-      }
+    vipPerson: {
+      tags: ['1', '2'], // 多标签
+    },
+    vipCompany: {
+      
+    },
+    blackList: { 
+      type: 'final' // atomic 没有子节点  computed 包含子节点
     }
-  }, {
+  }, on:[
+    { event: "PERSON", target: "vipPerson" },
+    { event: "COMPANY", target: "vipCompany" },
+    { event: "BLACK", target: "blackList" },
+   ]
+  }
+  , {
     actions: {
       alertRed: (context, event) => {
         console.log('green');
@@ -71,11 +77,33 @@
 // console.log(state.can('TOGGLE'))  // 能不能进行某种操作
 // console.log(state.initialState.done) // 是否到了最终值 之后不能再更改状态
 
+const { initialState } = state
+
+initialState.value = localStorage.getItem('userstate') || initialState.value
+
+const changeState = (status) => {
+  let nextState = {}
+  if (status === 'vipp') {
+    nextState = state.transition(initialState, 'PERSON')
+  } else if (status === 'vipc') {
+    nextState = state.transition(initialState, 'COMPANY');
+  } else if (status === 'black') {
+    nextState = state.transition(initialState, 'BLACK');
+  } else {
+    return
+  }
+  localStorage.setItem('userstate',nextState.value)
+}
+
 </script>
 
 <template>
   <div>
-    XState
+    <div>用户当前的状态：{{ initialState.value }}</div>
+    <p>45</p>
+    <div @click="changeState('vipp')">更改用户状态to vipPerson</div>
+    <div @click="changeState('vipc')">更改用户状态to vipCompany</div>
+    <div @click="changeState('black')">更改用户状态to blackList</div>
   </div>
 
 </template>
