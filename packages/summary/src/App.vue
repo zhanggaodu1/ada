@@ -2,7 +2,7 @@
   <div class="mx-20 content">
     <Header title="夏季徽章" />
     <Xstate />
-    <!-- <Raf /> -->
+    <Raf />
     <Calender />
     <Tabs/>
     <PictureList :artList="artList" />
