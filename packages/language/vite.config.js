@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import tailwind from 'tailwindcss'
 import vue from '@vitejs/plugin-vue'
-
+import path, {resolve} from 'path'
+ 
 export default defineConfig({
   base: '/base/',
   build: {

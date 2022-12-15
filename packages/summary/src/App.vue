@@ -1,7 +1,13 @@
 <template>
   <div class="mx-20 content">
-    <Header title="夏季徽章" />
+    <Deep/>
+    <div class="test">
+      vw vh
+      <p class="rem">宽200px 高150px</p>
+    </div>
     <Water />
+    <Header title="夏季徽章" />
+    <BoxShadow />
     <Xstate />
     <Raf />
     <Calender />
@@ -41,7 +47,20 @@
 </template>
 
 <style scoped lang="scss">
-.content {   
+@import "./app.scss";
+.test {
+  color: green;
+}
+::v-deep .md {
+  color: red;
+}
+.rem {
+  // 1vw 375 / 100  1vh = 667 / 100
+  font-size: getVw(16);
+  width: 53vw;
+  height: 40vw;
+}
+.content {
   // width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -69,7 +88,12 @@ import Calender from './Calender.vue';
 import Raf from './Raf.vue';
 import Xstate from './Xstate.vue';
 import Water from './Water.vue';
+import BoxShadow from './BoxShadow.vue';
+import Deep from './components/deep.vue';
 
+window.addEventListener('resize', (event) => {
+  console.log(font_size)
+})
 function readExcel (e){
   // 读取表格文件
   let that = this;
