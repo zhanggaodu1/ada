@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "path": "^0.12.7",
-    "postcss": "^8.4.20"
+    "postcss": "^8.4.20",
+    "unplugin-auto-import": "^0.12.1",
+    "unplugin-vue-components": "^0.22.12"
   }
 }

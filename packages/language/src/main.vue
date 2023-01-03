@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, nextTick, onMounted } from 'vue'
+// import { ref, computed, nextTick, onMounted } from 'vue'
 const roll = ref(null)
 const prize_list = ref([
   {'name':'海鲜套餐'},
@@ -164,8 +164,6 @@ const animate = ({timing, draw, duration}) => {
 
 window.addEventListener('keyup',(event) =>{
 console.log(event.code === 'KeyS')  
-
-
 })
 
 const gap = 5
@@ -222,7 +220,22 @@ const bind_after = () => {
 }
 const bind_control = () => {
   return
-} 
+}
+
+// 主题颜色切换
+const body = document.querySelector('body')
+console.log(body)
+body.setAttribute('data-theme','default')
+
+const bind_theme = () => {
+  if(body.getAttribute('data-theme') === 'default') {
+    body.setAttribute('data-theme','dark')
+  } else {
+    body.setAttribute('data-theme','default')
+  }
+  console.log(body.getAttribute('data-theme'))
+}
+
 onMounted(() => {
   player.value.addEventListener('play', e => {
     console.log('play', e)
@@ -243,9 +256,11 @@ onMounted(() => {
     console.log('error', e)
   })
 })
+
 </script>
 
 <template>
+  <div class="btn" @click="bind_theme">切换主题</div>
   <div class="video-box relative">
     <video @click="bind_play" ref="player">
       <source src="./1.mp4" type="video/mp4">
@@ -273,6 +288,10 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.btn {
+  background-color: var(--bg);
+  color: var(--fg);
+}
 .video-box {
   width: 100vw;
   aspect-ratio: 2/1.2;
