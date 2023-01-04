@@ -260,8 +260,16 @@ onMounted(() => {
 <template>
   <div class="btn" @click="bind_theme">切换主题</div>
   <div class="video-box relative">
-    <video @click="bind_play" ref="player">
-      <source src="./1.mp4" type="video/mp4">
+    <video @click="bind_play" controls ref="player" src="./1.mp4" type="video/mp4">
+      <track default
+        kind="captions"
+        srclang="en"
+        src="/media/examples/friday.vtt">
+        <!-- 字幕文件 cue可以设置字幕的样式 -->
+        Download the
+      <a href="./1.mp4">MP4</a>
+      video, and
+      <a href="/media/examples/friday.vtt">111</a>.
     </video>
     <div @click="bind_control" class="control flex justify-start items-center">
       <span @click="bind_play">{{ play_text }}</span>
