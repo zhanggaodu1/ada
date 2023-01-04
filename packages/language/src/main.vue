@@ -300,7 +300,7 @@ onMounted(() => {
 }
 .video-box {
   width: 100vw;
-  aspect-ratio: 2/1.2;
+  aspect-ratio: 5/3;
   // height: 200px;
   border: 1px solid #000;
   video {
