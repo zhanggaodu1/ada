@@ -224,7 +224,6 @@ const bind_control = () => {
 
 // 主题颜色切换
 const body = document.querySelector('body')
-console.log(body)
 body.setAttribute('data-theme','default')
 
 const bind_theme = () => {
@@ -233,7 +232,6 @@ const bind_theme = () => {
   } else {
     body.setAttribute('data-theme','default')
   }
-  console.log(body.getAttribute('data-theme'))
 }
 
 onMounted(() => {
